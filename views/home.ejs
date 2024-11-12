@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <title>API Documentation</title>
+</head>
+
+<body class="back">
+    <nav class="navbar">
+        <div class="navbar-left"><span style="color: rgb(36, 97, 187);">Exams Database</span> - API Documentation</div>
+        <div class="navbar-right">
+            <div class="navbar-active"></div>
+            <div class="navbar-text">API Active</div>
+        </div>
+    </nav>
+
+    <div class="button-list">
+        <button class="button" id="home-button">
+            <div>HOME</div>
+            <div>
+                <span class="small-text">Get started with the API here</span></div>
+        </button>
+        <button class="button" id="users-button">
+            <div>USERS</div>
+            <div><span class="small-text">replit.dev-api/v1/users</span></div>
+        </button>
+
+        <button class="button" id="users-manager-button">
+            <div>USERS MANAGER</div>
+            <div><span class="small-text">replit.dev-api/v1/users/get</span></div>
+        </button>
+       
+    </div>
+
+    <div class="button-line">
+        
+        <a href="https://github.com/pricob/Pythonii-Backend" target="_blank"><button class="custom-button">
+            <span>
+                <img class="github" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngkey.com%2Fpng%2Ffull%2F178-1787243_github-icon-png.png&f=1&nofb=1&ipt=69c77b3a5fb99a3e58efc863e004f977714d4a86800feb76fcbd5b9fb7e81eec&ipo=images">
+            </span>
+            <span class="github-text">
+                View on Github
+            </span>
+        </button></a>
+
+        <a href="https://discord.gg/xcEYBpn2k2" target="_blank"><button class="custom-button">
+            <span>
+                <img class="discord" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogodownload.org%2Fwp-content%2Fuploads%2F2017%2F11%2Fdiscord-logo-1.png&f=1&nofb=1&ipt=0c3aed079ee07a2fa1a54ecd8d7f9c4bed3dda94b539fca7ac5088e69d9e1e32&ipo=images">
+            </span>
+            <span class="discord-text">
+
+            </span>
+                Contact Discord
+            </span>
+        </button></a>
+
+    </div>
+
+    <div class="content" id="content">
+        <%- include('../partials/home.ejs'); %>
+    </div>
+
+    <script>
+        const homeButton = document.getElementById("home-button");
+        const usersButton = document.getElementById("users-button");
+        const usersManagerButton = document.getElementById("users-manager-button");
+        
+        const content = document.getElementById("content");
+        homeButton.classList.add("selected");
+
+        function selectButton(button) {
+            homeButton.classList.remove("selected");
+            usersButton.classList.remove("selected");
+            usersManagerButton.classList.remove("selected");
+            button.classList.add("selected");
+        }
+
+        homeButton.addEventListener("click", () => {
+            content.innerHTML = `
+            <%- include('../partials/home'); %>
+            `;
+            selectButton(homeButton);
+        });
+
+        usersButton.addEventListener("click", () => {
+            content.innerHTML = `
+            <%- include('../partials/users'); %>
+            `;
+            selectButton(usersButton);
+        });
+
+        usersManagerButton.addEventListener("click", () => {
+            content.innerHTML = `
+            <%- include('../partials/usersManager'); %>
+            `;
+            selectButton(usersManagerButton);
+        });
+
+    </script>
+
+</body>
+</html>
